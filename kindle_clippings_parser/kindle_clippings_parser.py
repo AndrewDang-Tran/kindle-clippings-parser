@@ -3,7 +3,7 @@ import zoneinfo
 
 from datetime import datetime, timezone
 
-from src.models import KindleClippings, Book, Highlight, KindleClippingsParserConfig
+from kindle_clippings_parser.models import KindleClippings, Book, Highlight, KindleClippingsParserConfig
 
 CLIPPING_DIVIDER = '==========';
 
