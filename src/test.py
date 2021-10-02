@@ -1,4 +1,10 @@
-from .Parser import parse_kindle_clippings
+from src.KindleClippingsParser import KindleClippingsParser
+from models import KindleClippingsParserConfig
 
-if __name__ == '__main__'
-    output = parse_kindle_clippings('../example_clippings.txt')
+if __name__ == '__main__':
+    config = KindleClippingsParserConfig(True, 'PST8PDT')
+    parser = KindleClippingsParser(config)
+
+    output = parser.parse_kindle_clippings('../example_clippings.txt')
+
+    print()
