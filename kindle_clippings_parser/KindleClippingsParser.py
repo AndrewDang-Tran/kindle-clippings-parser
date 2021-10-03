@@ -1,5 +1,6 @@
 import re
 import zoneinfo
+import warnings
 
 from datetime import datetime, timezone
 
@@ -35,7 +36,7 @@ class KindleClippingsParser:
         for highlight in highlights:
             lines = highlight.split('\n')
             lines = [l for l in lines if l]
-            if len(lines) >= 3:
+            if len(lines) == 3:
                 book_line = lines[0]
                 highlight_info_line = lines[1]
                 highlighted_raw = lines[2].strip()
@@ -52,6 +53,8 @@ class KindleClippingsParser:
                     books[book_hash] = book
 
                 book.highlights.append(new_highlight)
+            else:
+                warnings.warn(f'Skipping empty highlight or unknown highlight format {highlight}')
 
         return KindleClippings(list(books.values()))
 

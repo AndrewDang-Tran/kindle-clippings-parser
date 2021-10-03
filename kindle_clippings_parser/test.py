@@ -1,4 +1,4 @@
-from kindle_clippings_parser.kindle_clippings_parser import KindleClippingsParser
+from kindle_clippings_parser.KindleClippingsParser import KindleClippingsParser
 from models import KindleClippingsParserConfig
 
 if __name__ == '__main__':
