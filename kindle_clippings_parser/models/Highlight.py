@@ -6,4 +6,4 @@ class Highlight:
     text: str
     location: str
     relative_page_number: int
-    created_date: datetime
+    highlight_date: datetime

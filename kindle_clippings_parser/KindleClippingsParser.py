@@ -25,8 +25,8 @@ class KindleClippingsParser:
         self.zone_info = zoneinfo.ZoneInfo(config.zone_info_key)
 
     def parse_kindle_clippings(self, file_path: str) -> KindleClippings:
-        file = open(file_path)
-        all_lines = file.read()
+        file = open(file_path, mode='r', encoding='utf-8-sig')
+        all_lines = file.read().replace(u'\ufeff', '')
         file.close()
 
         highlights = all_lines.split(CLIPPING_DIVIDER)
@@ -68,6 +68,12 @@ class KindleClippingsParser:
             title = book_line[: book_line.find(f'({publisher}')].strip()
             author = match[1]
             return title, publisher, author
+        elif len(match) == 1:
+            publisher = ''
+            author = match[0]
+            title = book_line[: book_line.find(f'({author}')].strip()
+            return title, publisher, author
+
 
         return None, None, None
 
